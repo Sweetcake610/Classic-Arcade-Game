@@ -29,14 +29,14 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function () {
-	this.char = 'images/char-boy,png';
+	this.charboy = 'images/char-boy.png';
 };
 Player.prototype.update = function(dt) {
 	
 };
 
 Player.prototype.render = function() {
-	ctx.drawImage(Resource.get(this.char), this.x, this.y);
+	ctx.drawImage(Resource.get(this.charboy), this.x, this.y);
 };
 
 Player.prototype.handleInput = function() {
@@ -47,7 +47,7 @@ Player.prototype.handleInput = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let allEnemies = [];
-let player = {};
+let player = new Player();
 
 
 // This listens for key presses and sends the keys to your
