@@ -36,7 +36,7 @@ Player.prototype.update = function(dt) {
 };
 
 Player.prototype.render = function() {
-	ctx.drawImage(Resource.get(this.charboy), this.x, this.y);
+	ctx.drawImage(Resources.get(this.charboy), this.x, this.y);
 };
 
 Player.prototype.handleInput = function() {
@@ -46,7 +46,7 @@ Player.prototype.handleInput = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let allEnemies = [];
+let allEnemies = [new Enemy()];
 let player = new Player();
 
 
