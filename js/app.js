@@ -1,16 +1,13 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 	this.x = x;
 	this.y = y;
-	this.speed = speed;
 	
+	this.sprite = 'images/enemy-bug.png';
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-	
-    this.sprite = 'images/enemy-bug.png';
-	
 };
 
 // Update the enemy's position, required method for game
@@ -19,14 +16,22 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-	this.x += this.speed * dt;
+	
+let randomSpeed = function() {
+		let max = 200;
+		let min = 10;
+		let speed = Math.floor(Math.random() * (max - min + 1)) + min;
+		return speed * dt; 
+	}
+	this.x += randomSpeed();	
 	
 	if(this.x > 520) {
-		this.x = -15;
+		this.x = -50;
+		//this.x += randomSpeed();
 	}
 	
-	
 };
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -45,6 +50,7 @@ var Player = function (x, y, speed) {
 };
 Player.prototype.update = function(dt) {
 	
+	
 };
 
 Player.prototype.render = function() {
@@ -54,13 +60,13 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keyPress) {
 	switch(keyPress) {
 		case 'left':
-			this.x -= this.speed + 45;
+			this.x -= this.speed + 60;
 			break;
 		case 'up':
 			this.y -= this.speed + 45;
 			break;
 		case 'right':
-			this.x += this.speed + 45;
+			this.x += this.speed + 60;
 			break;
 		case 'down':
 			this.y += this.speed + 45;
@@ -68,15 +74,17 @@ Player.prototype.handleInput = function(keyPress) {
 	}
 };
 
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy = new Enemy(-50, 220, 30);
-let enemy1 = new Enemy(-50, 140, 70);
-let enemy2 = new Enemy(-50, 50, 120);
+let enemy = new Enemy(-50, 220);
+let enemy1 = new Enemy(-50, 140);
+let enemy2 = new Enemy(-50, 60);
 let allEnemies = [];
 allEnemies.push(enemy, enemy1, enemy2);
-let player = new Player(205, 390, 50);
+
+let player = new Player(205, 380, 40);
 
 
 // This listens for key presses and sends the keys to your
