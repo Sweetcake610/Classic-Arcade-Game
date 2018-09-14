@@ -49,6 +49,15 @@ var Player = function (x, y, speed) {
 	this.charboy = 'images/char-boy.png';
 };
 Player.prototype.update = function(dt) {
+	if(this.x < 0) {
+		this.x = 5;
+	}else if(this.x > 480){
+		this.x = 405;
+	}else if(this.y > 380) {
+		this.y = 380;
+	}else if(this.y < -15) {
+		this.y = 380;
+	}
 	
 	
 };
