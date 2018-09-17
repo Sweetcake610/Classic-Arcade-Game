@@ -49,6 +49,7 @@ Player.prototype.update = function(dt) {
 	}else if(this.y > 380) {
 		this.y = 380;
 	}else if(this.y < -15) {
+		gameOver();
 		this.y = 380;
 	}
 };
@@ -80,13 +81,13 @@ Player.prototype.handleInput = function(keyPress) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy = new Enemy(-50, 220, 15, 15);
-let enemy1 = new Enemy(-50, 140, 15, 15);
-let enemy2 = new Enemy(-50, 60, 15, 15);
+let enemy = new Enemy(-50, 220);
+let enemy1 = new Enemy(-50, 140);
+let enemy2 = new Enemy(-50, 60);
 let allEnemies = [];
 allEnemies.push(enemy, enemy1, enemy2);
 
-let player = new Player(205, 380, 40, 15, 15);
+let player = new Player(205, 380, 40);
 
 
 // This listens for key presses and sends the keys to your
@@ -101,3 +102,18 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function gameOver() {
+let alertBox = document.getElementById('modal');
+let playAgain = document.getElementById('playAgain');
+let message = document.querySelector('.alertModal');		
+	if(alertBox.classList == 'modal') {
+		alertBox.style.display = 'block';
+		}
+		playAgain.addEventListener('click', function() {
+			if(event.target == this) {
+				alertBox.style.display = 'none';
+			}
+		});
+		player.x = 205;
+}
