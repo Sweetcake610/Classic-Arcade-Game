@@ -1,13 +1,9 @@
 // Enemies our player must avoid
 var Enemy = function(x, y) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
 	this.x = x;
 	this.y = y;
 	this.speed = Math.floor(Math.random() * 171) + 30;
 	this.sprite = 'images/enemy-bug.png';
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
 };
 
 // Update the enemy's position, required method for game
@@ -19,9 +15,17 @@ Enemy.prototype.update = function(dt) {
 	this.x += this.speed * dt;	
 	
 	if(this.x > 520) {
-		this.speed = Math.floor(Math.random() * 171) + 30;
+		this.speed = Math.floor(Math.random() * 201) + 30;
 		this.x += this.speed * dt;
 		this.x = -50;
+	}
+	if(player.x < this.x + 30 && 
+		player.x + 20 > this.x && 
+		player.y < this.y + 30 && 
+		player.y + 40 > this.y) {
+			
+		player.x = 205;
+		player.y = 380;
 	}
 };
 
@@ -38,7 +42,6 @@ var Player = function (x, y, speed) {
 	this.x = x;
 	this.y = y;
 	this.speed = speed;
-	//this.speedY = 0;
 	this.charboy = 'images/char-boy.png';
 };
 Player.prototype.update = function(dt) {
@@ -78,13 +81,13 @@ Player.prototype.handleInput = function(keyPress) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy = new Enemy(-50, 220);
-let enemy1 = new Enemy(-50, 140);
-let enemy2 = new Enemy(-50, 60);
+let enemy = new Enemy(-50, 220, 15, 15);
+let enemy1 = new Enemy(-50, 140, 15, 15);
+let enemy2 = new Enemy(-50, 60, 15, 15);
 let allEnemies = [];
 allEnemies.push(enemy, enemy1, enemy2);
 
-let player = new Player(205, 380, 40);
+let player = new Player(205, 380, 40, 15, 15);
 
 
 // This listens for key presses and sends the keys to your
