@@ -19,11 +19,8 @@ Enemy.prototype.update = function(dt) {
 		this.x += this.speed * dt;
 		this.x = -50;
 	}
-	if(player.x < this.x + 30 && 
-		player.x + 20 > this.x && 
-		player.y < this.y + 30 && 
-		player.y + 40 > this.y) {
-			
+	if(player.x < this.x + 30 && player.x + 20 > this.x && 
+		player.y < this.y + 30 && player.y + 40 > this.y) {
 		player.x = 205;
 		player.y = 380;
 	}
@@ -35,15 +32,15 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Player of the game
 var Player = function (x, y, speed) {
 	this.x = x;
 	this.y = y;
 	this.speed = speed;
 	this.charboy = 'images/char-boy.png';
 };
+
+// Update the player's position, required method for game
 Player.prototype.update = function(dt) {
 	if(this.x < 0) {
 		this.x = 5;
@@ -56,10 +53,12 @@ Player.prototype.update = function(dt) {
 	}
 };
 
+// Draw the player on the screen, required method for game
 Player.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.charboy), this.x, this.y);
 };
 
+// sets the arrow keys to move the player on the game canvas
 Player.prototype.handleInput = function(keyPress) {
 	switch(keyPress) {
 		case 'left':
