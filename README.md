@@ -10,11 +10,12 @@ You must move across the grass, through the bricks and to the water to win.
 However the creepy and dangerous bugs are trying to stop you!
 Maneuver pass them to get to water and don't get hit or you will have to start over.
 ```
-## ScreenShot
-
-
-
-
+## Insallation of Game
+```
+1. Download file to computer.
+2. Extract files if downloaded a zip file.
+3. Open file and double click on index.html file to open game in browser.
+```
 
 ## Dependencies
 ```
