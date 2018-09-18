@@ -23,6 +23,7 @@ Enemy.prototype.update = function(dt) {
 		player.y < this.y + 30 && player.y + 30 > this.y) {
 		player.x = 205;
 		player.y = 380;
+		this.x = -50;
 	}
 };
 
@@ -76,15 +77,19 @@ Player.prototype.handleInput = function(keyPress) {
 			break;
 	}
 };
-var Gems = function(y, gems) {
-	this.x = -50;
-	this.y = y;
+var Gems = function(x, gems) {
+	this.x = x;
+	this.y = -30;
+	this.speedY = Math.floor(Math.random() * 171) + 30;
 	this.speed = 240;
 	this.gems = gems;
 };
 
 Gems.prototype.update = function(dt) {
-	this.x += this.speed *dt;
+	this.y += this.speed *dt;
+	if(this.y > 610) {
+		this.y = -30;
+	}
 };
 
 Gems.prototype.render = function() {
@@ -102,9 +107,9 @@ allEnemies.push(enemy, enemy1, enemy2);
 let player = new Player(205, 380, 40);
 
 //Place the gems objects in an array called allGems
-let gemBlue = new Gems(160, 'images/Gem Blue.png');
-let gemGreen = new Gems(60, 'images/Gem Green.png');
-let gemOrange = new Gems(350,'images/Gem Orange.png');
+let gemBlue = new Gems(220, 'images/Gem Blue.png');
+let gemGreen = new Gems(130, 'images/Gem Green.png');
+let gemOrange = new Gems(320,'images/Gem Orange.png');
 let allGems = [];
 allGems.push(gemBlue, gemGreen, gemOrange);
 	
