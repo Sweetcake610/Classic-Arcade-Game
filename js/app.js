@@ -76,8 +76,21 @@ Player.prototype.handleInput = function(keyPress) {
 			break;
 	}
 };
+var Gems = function(x, y, gems) {
+	this.x = x;
+	this.y = y;
+	this.gems = gems;
+};
 
+Gems.prototype.update = function(dt) {
+	
+};
 
+Gems.prototype.render = function() {
+	ctx.drawImage(Resources.get(this.gems), this.x, this.y, 60, 101);
+	//ctx.drawImage(Resources.get(this.gemGreen), this.x, this.y);
+	//ctx.drawImage(Resources.get(this.gemOrange), this.x, this.y);
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -88,7 +101,14 @@ let allEnemies = [];
 allEnemies.push(enemy, enemy1, enemy2);
 
 let player = new Player(205, 380, 40);
-
+let gemBlue = new Gems(205, 160, 'images/Gem Blue.png');
+let gemGreen = new Gems(170, 60, 'images/Gem Green.png');
+let gemOrange = new Gems(320, 350,'images/Gem Orange.png');
+let allGems = [];
+allGems.push(gemBlue, gemGreen, gemOrange);
+;
+	
+	
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
