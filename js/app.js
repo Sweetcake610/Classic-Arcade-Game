@@ -1,6 +1,6 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
-	this.x = x;
+var Enemy = function(y) {
+	this.x = -50;
 	this.y = y;
 	this.speed = Math.floor(Math.random() * 171) + 30;
 	this.sprite = 'images/enemy-bug.png';
@@ -76,37 +76,37 @@ Player.prototype.handleInput = function(keyPress) {
 			break;
 	}
 };
-var Gems = function(x, y, gems) {
-	this.x = x;
+var Gems = function(y, gems) {
+	this.x = -50;
 	this.y = y;
+	this.speed = 240;
 	this.gems = gems;
 };
 
 Gems.prototype.update = function(dt) {
-	
+	this.x += this.speed *dt;
 };
 
 Gems.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.gems), this.x, this.y, 60, 101);
-	//ctx.drawImage(Resources.get(this.gemGreen), this.x, this.y);
-	//ctx.drawImage(Resources.get(this.gemOrange), this.x, this.y);
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-let enemy = new Enemy(-50, 220);
-let enemy1 = new Enemy(-50, 140);
-let enemy2 = new Enemy(-50, 60);
+let enemy = new Enemy(220);
+let enemy1 = new Enemy(140);
+let enemy2 = new Enemy(60);
 let allEnemies = [];
 allEnemies.push(enemy, enemy1, enemy2);
 
+// Place the player object in a variable called player
 let player = new Player(205, 380, 40);
-let gemBlue = new Gems(205, 160, 'images/Gem Blue.png');
-let gemGreen = new Gems(170, 60, 'images/Gem Green.png');
-let gemOrange = new Gems(320, 350,'images/Gem Orange.png');
+
+//Place the gems objects in an array called allGems
+let gemBlue = new Gems(160, 'images/Gem Blue.png');
+let gemGreen = new Gems(60, 'images/Gem Green.png');
+let gemOrange = new Gems(350,'images/Gem Orange.png');
 let allGems = [];
 allGems.push(gemBlue, gemGreen, gemOrange);
-;
 	
 	
 
