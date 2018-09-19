@@ -81,7 +81,7 @@ var Gems = function(gems) {
 	this.x = Math.floor(Math.random() * 495) + 20;
 	
 	this.y = -30;
-	this.speed = 240;
+	this.speed = 270;
 	this.gems = gems;
 };
 
@@ -90,7 +90,18 @@ Gems.prototype.update = function(dt) {
 	this.y += this.speed *dt;
 	if(this.y > 610) {
 		this.y = -30;
-		this.x = Math.floor(Math.random() * 350) + 30;
+		this.x = Math.floor(Math.random() * 495) + 30;
+		if(this.x > 0 && this.x <= 101) {
+			this.x = 25;
+		}else if(this.x >= 102 && this.x <= 203) {
+			this.x = 125;
+		}else if(this.x >=204 && this.x <= 305) {
+			this.x = 225;
+		}else if(this.x >= 306 && this.x <= 407) {
+			this.x = 325;
+		}else if(this.x >= 407 && this.x <= 508) {
+			this.x = 435;
+		}
 	}
 	
 };
