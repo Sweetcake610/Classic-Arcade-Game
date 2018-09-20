@@ -83,7 +83,13 @@ var Gems = function(gems) {
 	this.speed = 270;
 	this.gems = gems;
 };
-
+let count = document.createElement('span');
+function scoreCard() {
+	let score = 0;
+	score += 10;
+	count.innerHTML = 'Score: ' + score;
+	//count.appendChild(score);	
+}
 Gems.prototype.update = function(dt) {
 	
 	this.y += this.speed *dt;
@@ -106,14 +112,17 @@ Gems.prototype.update = function(dt) {
 	
 	if(player.x < this.x + 40 && player.x + 60 > this.x && 
 		player.y < this.y + 40 && player.y + 50 > this.y) {
-		this.x = -60;
+		this.x = 10;
+		this.y = 640;
+		this.speed = 0;
+		scoreCard();
 	}
 };
 
 Gems.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.gems), this.x, this.y, 60, 101);
 	ctx.font= '20px Arial';
-	ctx.fillText('Score: ', 10, 570);
+	ctx.fillText(count.innerHTML, 10, 570);
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
