@@ -7,6 +7,7 @@ The Classic Arcade Game Clone is designed similar to the game Frogger.
 ## How to Play?
 ```
 You must move across the grass, through the bricks and to the water to win.
+Collect gems on the way to win the game.
 However the creepy and dangerous bugs are trying to stop you!
 Maneuver pass them to get to water and don't get hit or you will have to start over.
 ```
