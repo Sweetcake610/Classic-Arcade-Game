@@ -88,11 +88,6 @@ Gems.prototype.update = function(dt) {
 	
 	this.y += this.speed *dt;
 	
-	if(player.x < this.x + 60 && player.x + 60 > this.x && 
-		player.y < this.y + 40 && player.y + 50 > this.y) {
-		this.x = -60;
-	}
-	
 	if(this.y > 610) {
 		this.y = -30;
 		this.x = Math.floor(Math.random() * 495) + 30;
@@ -109,11 +104,16 @@ Gems.prototype.update = function(dt) {
 		}
 	}
 	
-	
+	if(player.x < this.x + 40 && player.x + 60 > this.x && 
+		player.y < this.y + 40 && player.y + 50 > this.y) {
+		this.x = -60;
+	}
 };
 
 Gems.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.gems), this.x, this.y, 60, 101);
+	ctx.font= '20px Arial';
+	ctx.fillText('Score: ', 10, 570);
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
