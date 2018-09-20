@@ -79,23 +79,24 @@ Player.prototype.handleInput = function(keyPress) {
 };
 var Gems = function(gems) {
 	this.x = -60;
-	this.y = -30;
+	this.y = -40;
 	this.speed = 270;
 	this.gems = gems;
 };
+
+//added score text to canvas. Still needs work.
 let count = document.createElement('span');
 function scoreCard() {
 	let score = 0;
 	score += 10;
 	count.innerHTML = 'Score: ' + score;
-	//count.appendChild(score);	
 }
 Gems.prototype.update = function(dt) {
 	
 	this.y += this.speed *dt;
 	
 	if(this.y > 610) {
-		this.y = -30;
+		this.y = -40;
 		this.x = Math.floor(Math.random() * 495) + 30;
 		if(this.x > 0 && this.x <= 101) {
 			this.x = 25;
@@ -112,10 +113,19 @@ Gems.prototype.update = function(dt) {
 	
 	if(player.x < this.x + 40 && player.x + 60 > this.x && 
 		player.y < this.y + 40 && player.y + 50 > this.y) {
-		this.x = 10;
-		this.y = 640;
-		this.speed = 0;
-		scoreCard();
+		this.y = -40;
+		this.x = Math.floor(Math.random() * 495) + 30;
+		if(this.x > 0 && this.x <= 101) {
+			this.x = 25;
+		}else if(this.x >= 102 && this.x <= 203) {
+			this.x = 125;
+		}else if(this.x >=204 && this.x <= 305) {
+			this.x = 225;
+		}else if(this.x >= 306 && this.x <= 407) {
+			this.x = 325;
+		}else if(this.x >= 407 && this.x <= 508) {
+			this.x = 435;
+		}
 	}
 };
 
