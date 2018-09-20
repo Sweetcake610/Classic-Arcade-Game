@@ -78,8 +78,7 @@ Player.prototype.handleInput = function(keyPress) {
 	}
 };
 var Gems = function(gems) {
-	this.x = Math.floor(Math.random() * 495) + 20;
-	
+	this.x = -60;
 	this.y = -30;
 	this.speed = 270;
 	this.gems = gems;
@@ -88,6 +87,12 @@ var Gems = function(gems) {
 Gems.prototype.update = function(dt) {
 	
 	this.y += this.speed *dt;
+	
+	if(player.x < this.x + 60 && player.x + 60 > this.x && 
+		player.y < this.y + 40 && player.y + 50 > this.y) {
+		this.x = -60;
+	}
+	
 	if(this.y > 610) {
 		this.y = -30;
 		this.x = Math.floor(Math.random() * 495) + 30;
@@ -103,6 +108,7 @@ Gems.prototype.update = function(dt) {
 			this.x = 435;
 		}
 	}
+	
 	
 };
 
